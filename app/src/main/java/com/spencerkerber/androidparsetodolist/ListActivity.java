@@ -2,7 +2,7 @@ package com.spencerkerber.androidparsetodolist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,13 +10,17 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.spencerkerber.androidparsetodolist.model.Task;
 import com.spencerkerber.androidparsetodolist.model.TasksAdapter;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class ListActivity extends ActionBarActivity {
+public class ListActivity extends AppCompatActivity {
 
     private Button btnCreate;
     private TasksAdapter adapter;
@@ -46,6 +50,11 @@ public class ListActivity extends ActionBarActivity {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Task");
 
         query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> list, com.parse.ParseException e) {
+
+            }
+
             public void done(List<ParseObject> taskList, ParseException e) {
                 if (e == null) {
                     for (ParseObject tasks : taskList) {

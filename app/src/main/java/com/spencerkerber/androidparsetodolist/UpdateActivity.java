@@ -2,18 +2,21 @@ package com.spencerkerber.androidparsetodolist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.spencerkerber.androidparsetodolist.model.Task;
 
 import java.text.ParseException;
 
 
-public class UpdateActivity extends ActionBarActivity {
+public class UpdateActivity extends AppCompatActivity {
 
     private TextView txtName;
     private TextView txtDescription;
@@ -40,6 +43,11 @@ public class UpdateActivity extends ActionBarActivity {
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Task");
         query.getInBackground(task.getTaskId(), new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject parseObject, com.parse.ParseException e) {
+
+            }
+
             public void done(ParseObject task, ParseException e) {
                 if (e == null) {
                     name = task.getString("name");
@@ -73,6 +81,11 @@ public class UpdateActivity extends ActionBarActivity {
                     ParseQuery<ParseObject> query = ParseQuery.getQuery("GameScore");
 
                     query.getInBackground(task.getTaskId(), new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject parseObject, com.parse.ParseException e) {
+
+                        }
+
                         public void done(ParseObject task, ParseException e) {
                             if (e == null) {
                                 task.put("name", name);
@@ -102,6 +115,11 @@ public class UpdateActivity extends ActionBarActivity {
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("task");
                 query.getInBackground(task.getTaskId(), new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject parseObject, com.parse.ParseException e) {
+
+                    }
+
                     public void done(ParseObject task, ParseException e) {
                         if (e == null) {
 

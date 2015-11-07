@@ -2,14 +2,16 @@ package com.spencerkerber.androidparsetodolist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
 
-public class CreateActivity extends ActionBarActivity {
+
+public class CreateActivity extends AppCompatActivity {
 
     private TextView txtName;
     private TextView txtDescription;

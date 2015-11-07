@@ -7,10 +7,18 @@ public class Task {
 
     public String taskId;
     public String name;
+    public String description;
+
+    public Task(String taskId, String name, String description) {
+        this.taskId = taskId;
+        this.name = name;
+        this.description = description;
+    }
 
     public Task(){
         this.taskId = "";
         this.name = "";
+        this.description = "";
     }
 
     public void setTaskId(String taskId){
