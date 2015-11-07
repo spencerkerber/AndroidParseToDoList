@@ -9,11 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.spencerkerber.androidparsetodolist.model.Task;
-
-import java.text.ParseException;
 
 
 public class UpdateActivity extends AppCompatActivity {
@@ -43,10 +42,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Task");
         query.getInBackground(task.getTaskId(), new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject parseObject, com.parse.ParseException e) {
 
-            }
 
             public void done(ParseObject task, ParseException e) {
                 if (e == null) {
@@ -81,11 +77,6 @@ public class UpdateActivity extends AppCompatActivity {
                     ParseQuery<ParseObject> query = ParseQuery.getQuery("GameScore");
 
                     query.getInBackground(task.getTaskId(), new GetCallback<ParseObject>() {
-                        @Override
-                        public void done(ParseObject parseObject, com.parse.ParseException e) {
-
-                        }
-
                         public void done(ParseObject task, ParseException e) {
                             if (e == null) {
                                 task.put("name", name);
@@ -115,11 +106,6 @@ public class UpdateActivity extends AppCompatActivity {
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("task");
                 query.getInBackground(task.getTaskId(), new GetCallback<ParseObject>() {
-                    @Override
-                    public void done(ParseObject parseObject, com.parse.ParseException e) {
-
-                    }
-
                     public void done(ParseObject task, ParseException e) {
                         if (e == null) {
 

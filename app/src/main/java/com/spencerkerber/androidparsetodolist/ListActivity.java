@@ -13,10 +13,10 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseException;
 import com.spencerkerber.androidparsetodolist.model.Task;
 import com.spencerkerber.androidparsetodolist.model.TasksAdapter;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,10 +50,6 @@ public class ListActivity extends AppCompatActivity {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Task");
 
         query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, com.parse.ParseException e) {
-
-            }
 
             public void done(List<ParseObject> taskList, ParseException e) {
                 if (e == null) {
@@ -64,7 +60,7 @@ public class ListActivity extends AppCompatActivity {
                         task.setTaskId(tasks.getObjectId());
                         task.setName(tasks.getString("name"));
 
-                        Log.d("name", task.getName());
+                        Log.d("name",task.getName());
                         adapter.add(task);
                     }
                 } else {
@@ -79,7 +75,7 @@ public class ListActivity extends AppCompatActivity {
                 Task task = adapter.getItem(position);
 
                 Intent intent = new Intent(getBaseContext(), UpdateActivity.class);
-                intent.putExtra("objectId", task.getTaskId());
+                intent.putExtra("objectId",  task.getTaskId());
                 startActivity(intent);
             }
         });
